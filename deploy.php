@@ -22,7 +22,7 @@ add('writable_dirs', []);
 
 // Hosts
 
-host('35.238.82.142')
+host('3.10.175.62')
     ->user('deploy')
     ->set('deploy_path', '~/{{application}}');
 
