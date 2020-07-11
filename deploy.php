@@ -32,6 +32,21 @@ task('build', function () {
     run('cd {{release_path}} && build');
 });
 
+task('reload:php-fpm', function () {
+    run('sudo /usr/sbin/service php7.3-fpm restart');
+});
+
+task('release', [
+    'deploy:prepare',
+    'deploy:vendors',
+    'artisan:storage:link',
+    'artisan:view:cache',
+    'artisan:config:cache',
+    'deploy:publish',
+    'reload:php-fpm'
+]);
+
+
 // [Optional] if deploy fails automatically unlock.
 after('deploy:failed', 'deploy:unlock');
 
