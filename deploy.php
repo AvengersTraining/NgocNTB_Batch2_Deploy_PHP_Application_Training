@@ -24,6 +24,7 @@ add('writable_dirs', []);
 
 host('3.10.175.62')
     ->user('deploy')
+    ->stage('dev')
     ->set('deploy_path', '~/{{application}}');
 
 // Tasks
@@ -37,13 +38,23 @@ task('reload:php-fpm', function () {
 });
 
 task('release', [
+    'deploy:info',
     'deploy:prepare',
+    'deploy:lock',
+    'deploy:release',
+    'deploy:update_code',
+    'deploy:shared',
     'deploy:vendors',
+    'deploy:writable',
     'artisan:storage:link',
-    'artisan:view:cache',
+    'artisan:view:clear',
+    'artisan:cache:clear',
     'artisan:config:cache',
-    'deploy:publish',
-    'reload:php-fpm'
+    'artisan:optimize',
+    'deploy:symlink',
+    'deploy:unlock',
+    'cleanup',
+    'reload:php-fpm',
 ]);
 
 

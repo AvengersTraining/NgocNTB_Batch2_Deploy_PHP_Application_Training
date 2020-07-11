@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function home() {
-        return 1;
+        return 'tien hihii';
     }
 }
