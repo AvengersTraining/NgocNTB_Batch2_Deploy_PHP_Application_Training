@@ -7,7 +7,7 @@ require 'recipe/laravel.php';
 set('application', 'deploy-traning-php');
 
 // Project repository
-set('repository', 'git@github.com:ngocntb-0799/NgocNTB_Batch2_Deploy_PHP_Application_Training.git');
+set('repository', 'git@github.com:AvengersTraining/NgocNTB_Batch2_Deploy_PHP_Application_Training.git');
 
 // [Optional] Allocate tty for git clone. Default value is false.
 set('git_tty', true);
