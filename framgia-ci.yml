@@ -44,6 +44,12 @@ test:
   #    - phpdbg -qrr vendor/bin/phpunit -d memory_limit=1024M
   #      --coverage-clover=.framgia-ci-reports/coverage-clover.xml
   #      --coverage-html=.framgia-ci-reports/coverage
+deploy:
+  rocketeer:
+    image: framgiaciteam/deployer:2.0
+    when:
+      branch: develop
+    run: dep deploy dev -vvv
 cache:
   composer:
     folder: vendor
