@@ -37,7 +37,7 @@ task('reload:php-fpm', function () {
     run('sudo /usr/sbin/service php7.3-fpm restart');
 });
 
-task('release', [
+task('deploy', [
     'deploy:info',
     'deploy:prepare',
     'deploy:lock',
